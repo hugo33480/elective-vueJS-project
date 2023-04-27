@@ -2,16 +2,13 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import axios from 'axios'
+import vuetify from './plugins/vuetify';
+import CardPlayerSpecList from "@/components/CardPlayerSpecList.vue";
 
-// Vuetify
-import 'vuetify/styles';
-import { createVuetify } from 'vuetify';
-import * as components from 'vuetify/components';
-import * as directives from 'vuetify/directives';
+const app = createApp(App)
 
-const vuetify = createVuetify({
-    components,
-    directives,
-});
+app.config.globalProperties.$axios = axios;
+app.component('card-player-spec-list', CardPlayerSpecList);
 
-createApp(App).use(vuetify).use(store).use(router).mount('#app')
+app.use(vuetify).use(store).use(router).mount('#app')

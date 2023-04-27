@@ -6,23 +6,17 @@
 
 <style>
 #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
+    font-family: bff-regular;
 }
 
-nav {
-    padding: 30px;
+@font-face {
+    font-family: bff-bold;
+    src: url("@/assets/fonts/BeaufortforLOL-Bold.otf") format("opentype");
 }
 
-nav a {
-    font-weight: bold;
-    color: #2c3e50;
+@font-face {
+    font-family: bff-regular;
+    src: url("@/assets/fonts/BeaufortforLOL-Regular.otf") format("opentype");
 }
 
-nav a.router-link-exact-active {
-    color: #42b983;
-}
 </style>
