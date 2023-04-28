@@ -1,14 +1,19 @@
-import { createStore } from 'vuex'
+import {createStore} from 'vuex'
+import RiotApiService from "@/Services/RiotApiService";
 
 export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
+    state: {
+        champions: null,
+    },
+    getters: {},
+    mutations: {
+        // async champions(state) {
+        //     const {data: {data}} = await RiotApiService.champions()
+        //     if (state.champions == null) {
+        //         state.champions = data;
+        //     }
+        // }
+    },
+    actions: {},
+    modules: {}
 })

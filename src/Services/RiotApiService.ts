@@ -5,7 +5,7 @@ export default class RiotApiService {
     static apiKey: string = "RGAPI-a6e09577-ad44-4fe9-b9ac-ff4f442ffd1c";
 
     static SOLOQ_TYPE: string = "RANKED_SOLO_5x5";
-    static FELXQ_TYPE: string = "RANKED_FLEX_5x5";
+    static FELXQ_TYPE: string = "RANKED_FLEX_SR";
     static rankedQueue = [
         {type: this.SOLOQ_TYPE, id: 420, label: "Classé solo/duo"},
         {type: this.FELXQ_TYPE, id: 440, label: "Classé flexible"},
@@ -100,6 +100,16 @@ export default class RiotApiService {
     public static async perks(): Promise<any> {
         try {
             return await axios.get(`https://ddragon.leagueoflegends.com/cdn/10.16.1/data/fr_FR/runesReforged.json`);
+        } catch (e) {
+            if (e instanceof AxiosError) {
+                console.error(e);
+            }
+        }
+    }
+
+    public static async topChampions(summonerId: string): Promise<any> {
+        try {
+            return await axios.get(`https://euw1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-summoner/${summonerId}/top?api_key=${this.apiKey}`);
         } catch (e) {
             if (e instanceof AxiosError) {
                 console.error(e);

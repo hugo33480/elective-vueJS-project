@@ -59,7 +59,7 @@
                 </template>
             </div>
             <div class="d-flex justify-center align-center text-white">
-                <v-btn size="small" variant="text" icon>
+                <v-btn @click="goToProfile" size="small" variant="text" icon>
                     <v-icon>fa-solid fa-eye</v-icon>
                 </v-btn>
             </div>
@@ -73,12 +73,15 @@
 <script setup lang="ts">
 import {computed, onMounted, ref} from "vue";
 import RiotApiService from "@/Services/RiotApiService";
+import {useRoute, useRouter} from "vue-router";
 
 const props = defineProps(['player', 'champName', 'gameMode', 'summonerSpells', 'perks']);
 const champ = ref(null);
 const champData = ref(null);
 const rankData = ref([]);
 const loading = ref(false);
+const router = useRouter();
+const route = useRoute();
 
 function calculateWinrate({wins, losses}: { wins: number, losses: number }): number {
     return Math.round(wins / (wins + losses) * 100);
@@ -101,8 +104,8 @@ async function loadPlayerRankData() {
     rankData.value = data;
 }
 
-function goToProfile() {
-
+async function goToProfile(): Promise<any> {
+    await router.push({name: "profile", query: route.query})
 }
 
 onMounted(async () => {
