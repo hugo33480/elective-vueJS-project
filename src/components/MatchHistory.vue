@@ -10,18 +10,26 @@
             >
                 <v-card width="400">
                     <v-card-title :class="getPlayer(match).win ? 'bg-green-accent-3' : 'bg-red-accent-3'">
-                        {{ new Date(match.info.gameCreation).toLocaleDateString('fr-FR') }} - <span class="bff-bold">{{ match.info.gameMode }}</span>
+                        {{ new Date(match.info.gameCreation).toLocaleDateString('fr-FR') }} - <span
+                        class="bff-bold">{{ match.info.gameMode }}</span>
                     </v-card-title>
-<!--                    <v-card-text class="d-flex bg-white text&#45;&#45;primary">-->
-<!--                        -->
-<!--                    </v-card-text>-->
-                    <div class="d-flex">
+                    <!--                    <v-card-text class="d-flex bg-white text&#45;&#45;primary">-->
+                    <!--                        -->
+                    <!--                    </v-card-text>-->
+                    <div class="d-flex pa-3">
                         <div class="d-flex">
-                        <v-img width="50" height="50"
-                               :src="`http://ddragon.leagueoflegends.com/cdn/13.8.1/img/champion/${getPlayer(match).championName}.png`"></v-img>
+                            <v-img width="50" height="50"
+                                   :src="`http://ddragon.leagueoflegends.com/cdn/13.8.1/img/champion/${getPlayer(match).championName}.png`"></v-img>
                         </div>
                         <div class="d-flex align-center ml-5">
-                            <span class="bff-bold">{{ getPlayer(match).kills }}/{{ getPlayer(match).deaths }}/{{ getPlayer(match).assists }}</span>
+                            <span class="bff-bold">{{ getPlayer(match).kills }}/{{
+                                    getPlayer(match).deaths
+                                }}/{{ getPlayer(match).assists }}</span>
+                        </div>
+                        <div class="d-flex ml-5 align-center">
+                            <div v-for="key in 5">
+                                <v-img v-if="getPlayer(match)['item' + key]" width="40" height="40" :src="`http://ddragon.leagueoflegends.com/cdn/13.8.1/img/item/${getPlayer(match)['item' + key]}.png`"></v-img>
+                            </div>
                         </div>
                     </div>
                 </v-card>
