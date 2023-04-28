@@ -1,7 +1,7 @@
 <template>
     <v-container class="profile-container h-100" fluid>
         <div v-if="isDataLoaded">
-            <v-card width="100%">
+            <v-card elevation="6" width="100%">
                 <v-img height="400" cover
                        :src="`http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${topChamps[0].name}_0.jpg`">
                     <div class="d-flex flex-column justify-space-between text-white h-100">
@@ -28,7 +28,7 @@
                     </div>
                 </v-img>
                 <div class="d-flex">
-                    <v-card v-for="rank in ranks" class="d-flex ma-5 pa-5" width="50%">
+                    <v-card elevation="6" v-for="rank in ranks" class="d-flex ma-5 pa-5" width="50%">
                         <div class="d-flex mr-5">
                             <v-img width="200" height="200"
                                    :src="require(`../assets/images/ranks/rank_${rank.tier.toLowerCase()}.png`)"></v-img>
@@ -51,6 +51,9 @@
                     </v-card>
                 </div>
             </v-card>
+
+            <MatchHistory class="mt-8" :player="route.query">
+            </MatchHistory>
         </div>
     </v-container>
 </template>
@@ -59,6 +62,7 @@
 import {computed, onMounted, ref} from "vue";
 import {useRoute} from "vue-router";
 import RiotApiService from "@/Services/RiotApiService";
+import MatchHistory from "@/components/MatchHistory.vue";
 
 const route = useRoute();
 const topChamps = ref(null);

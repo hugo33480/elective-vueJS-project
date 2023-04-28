@@ -116,4 +116,24 @@ export default class RiotApiService {
             }
         }
     }
+
+    public static async tenLastMatchIds(puuid: string): Promise<any> {
+        try {
+            return await axios.get(`https://europe.api.riotgames.com/lol/match/v5/matches/by-puuid/${puuid}/ids?start=0&count=10&api_key=${this.apiKey}`)
+        } catch (e) {
+            if(e instanceof AxiosError) {
+                console.error(e);
+            }
+        }
+    }
+
+    public static async match(matchId: string): Promise<any> {
+        try {
+            return await axios.get(`https://europe.api.riotgames.com/lol/match/v5/matches/${matchId}?api_key=${this.apiKey}`)
+        } catch (e) {
+            if(e instanceof AxiosError) {
+                console.error(e);
+            }
+        }
+    }
 }
