@@ -13,9 +13,6 @@
                         {{ new Date(match.info.gameCreation).toLocaleDateString('fr-FR') }} - <span
                         class="bff-bold">{{ match.info.gameMode }}</span>
                     </v-card-title>
-                    <!--                    <v-card-text class="d-flex bg-white text&#45;&#45;primary">-->
-                    <!--                        -->
-                    <!--                    </v-card-text>-->
                     <div class="d-flex pa-3">
                         <div class="d-flex">
                             <v-img width="50" height="50"
